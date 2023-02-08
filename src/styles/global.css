@@ -142,7 +142,8 @@ html {
     color: #684ea6;
     margin-left: 5em;
     display: flex;
-    position: relative;
+    position: static;
+    left: 1px;
     width: auto;
     background: none;
     top: auto;
@@ -155,13 +156,11 @@ html {
     text-align: center;
     padding: 14px 16px;
     font-size: 1rem;
-    /* opacity: 0; */
   }
 
   .toggler:checked ~ .nav-container .nav-links {
     display: flex;
-    position: relative;
-    /* background-color: white; */
+    position: static;
     opacity: 1;
     transition: all 0.8s ease;
     transition-property: opacity, display;
