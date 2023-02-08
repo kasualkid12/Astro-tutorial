@@ -27,12 +27,13 @@ html {
   width: 100%;
   top: 5rem;
   left: 48px;
-  background-color: #ff9776;
+  background-color: #38a2f8;
   display: none;
   margin: 0;
 }
 
 .nav-links a {
+  color: #684ea6;
   display: block;
   text-align: center;
   padding: 10px 0;
@@ -43,11 +44,16 @@ html {
 }
 
 .nav-links a:hover, a:focus {
-  background-color: #ff9776;
+  transition: all 0.6s ease;
+  background-color: #38a2f8;
 }
 
 .expanded {
   display: unset;
+}
+
+.toggler {
+  visibility: hidden;
 }
 
 @media screen and (min-width: 636px) {
@@ -61,7 +67,103 @@ html {
 
   .nav-links a {
     display: inline-block;
+    text-align: center;
     padding: 15px 20px;
+    font-size: 1rem;
   }
 
+}
+
+@media screen and (max-width: 636px) {
+  .toggler{
+      visibility: visible;
+      z-index:2;
+      height: 50px;
+      width: 50px;
+      position: absolute;
+      top: 1.4em;
+      right: 1em;
+      cursor: pointer;
+      opacity: 0;
+  }
+
+  .hamburger{
+    position: absolute;
+    top: 1.4em;
+    right: 1em;
+    height: 40px;
+    width: 40px;
+    padding: 0.6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hamburger > div{
+    position: relative;
+    top: 0;
+    left: 0;
+    background: #684ea6;
+    height: 2px;
+    width: 50px;
+    transition: all  0.4s ease;
+  }
+
+  .hamburger > div::before,
+  .hamburger > div::after{
+    content: '';
+    position: absolute;
+    top: -8px;
+    background: #684ea6;
+    width: 100%;
+    height: 2px;
+    transition: all  0.4s ease;
+  }
+
+  .hamburger > div::after{
+    top: 8px;
+  }
+
+  .toggler:checked + .hamburger > div{
+    background: rgba(0,0,0,0);
+  }
+
+  .toggler:checked + .hamburger > div::before{
+    top: 0;
+    transform: rotate(45deg);
+  }
+
+  .toggler:checked + .hamburger > div::after{
+    top: 0;
+    transform: rotate(135deg);
+  }
+
+  .nav-links {
+    color: #684ea6;
+    margin-left: 5em;
+    display: flex;
+    position: relative;
+    width: auto;
+    background: none;
+    top: auto;
+    opacity: 0;
+    transition: all 0.8s ease;
+  }
+
+  .nav-links a {
+    display: inline-block;
+    text-align: center;
+    padding: 14px 16px;
+    font-size: 1rem;
+    /* opacity: 0; */
+  }
+
+  .toggler:checked ~ .nav-container .nav-links {
+    display: flex;
+    position: relative;
+    /* background-color: white; */
+    opacity: 1;
+    transition: all 0.8s ease;
+    transition-property: opacity, display;
+  }
 }
